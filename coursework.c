@@ -1,11 +1,6 @@
 #include <immintrin.h>
 #include <omp.h>
 
-/* Horizontal adding function taken from Stack Overflow, courtesy of Peter
- * Cordes
- * (http://stackoverflow.com/questions/6996764/fastest-way-to-do-horizontal-
- * float-vector-sum-on-x86)
- */
 float hsum_ps_sse3(__m128 v) {
   __m128 shuf = _mm_movehdup_ps(v);        // broadcast elements 3,1 to 2,0
   __m128 sums = _mm_add_ps(v, shuf);
